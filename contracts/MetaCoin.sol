@@ -1,18 +1,22 @@
-pragma solidity >=0.4.25 <0.6.0;
+// SPDX-License-Identifier: GPL-3.0
 
-// This is just a simple example of a coin-like contract.
-// It is not standards compatible and cannot be expected to talk to other
-// coin/token contracts.
+pragma solidity >=0.4.25 <0.9.0;
 
+// Contract name MetaCoin
 contract MetaCoin {
-	mapping (address => uint) balances;
+    // Key - Value map structure (address - amount)
+	mapping (address => uint) balances;  
 
-	event Transfer(address indexed _from, address indexed _to, uint256 _value);
+    // Event that emits logs on smart contract calls. Logging: From, To and Value of the transfer transaction.
+	event Transfer(address indexed _from, address indexed _to, uint256 _value); 
 
-	constructor() public {
+    // Constructor of the smart contract that sets the balance of the creator to 10,000 coins.
+	constructor() {
 		balances[tx.origin] = 10000;
 	}
 
+    // Function that send an amount of coins to a receiver account. 
+    // Returns if the balance of the sender is sufficient for the transfer.
 	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
 		if (balances[msg.sender] < amount) return false;
 		balances[msg.sender] -= amount;
@@ -21,6 +25,7 @@ contract MetaCoin {
 		return true;
 	}
 
+    // Function that retrieves the balance of an account on the balances mapping.
 	function getBalance(address addr) public view returns(uint) {
 		return balances[addr];
 	}

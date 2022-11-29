@@ -42,6 +42,7 @@ app.post('/validateWritter', async (req, res) => {
   try {
     const response = await truffle_connect.validateWritter(writterSign, writterId);
     const message = `The writter is: ${response ? 'Valid' : 'Invalid'}`;
+    console.log('response ', response);
     console.log({ message });
     res.send({ message, valid: response });
   } catch (err) {

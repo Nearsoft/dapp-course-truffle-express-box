@@ -1,9 +1,10 @@
+// Imports truffle-contract module and Metacoin compiled version of the contract.
 const contract = require('truffle-contract');
-
 const metacoin_artifact = require('../build/contracts/MetaCoin.json');
 var MetaCoin = contract(metacoin_artifact);
 
 module.exports = {
+  // Function that fetch the accounts of the web3 instance that we are using
   start: function(callback) {
     var self = this;
 
@@ -27,6 +28,7 @@ module.exports = {
       callback(self.accounts);
     });
   },
+  // Function that first get the deployed contract and the call the getBalance contract function.
   refreshBalance: function(account, callback) {
     var self = this;
     // Bootstrap the MetaCoin abstraction for Use.
@@ -43,6 +45,8 @@ module.exports = {
         callback("Error 404");
     });
   },
+  // Function that first get the deployed contract, 
+  // triggers the sendCoin contract function and then call the getBalance contract function.
   sendCoin: function(amount, sender, receiver, callback) {
     var self = this;
 
