@@ -29,7 +29,6 @@ module.exports = {
   },
   refreshBalance: function(account, callback) {
     var self = this;
-
     // Bootstrap the MetaCoin abstraction for Use.
     MetaCoin.setProvider(self.web3.currentProvider);
 
