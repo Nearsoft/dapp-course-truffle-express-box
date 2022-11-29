@@ -1,4 +1,6 @@
-# dapp-course-truffle-express-box Digital certificates use case code.
+# dapp-course-truffle-express-box 
+
+# Digital certificates use case code.
 
 Code reference for Dapp talk on Digital Certificates use case using Truffle Express-box
 
